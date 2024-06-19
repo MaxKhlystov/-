@@ -42,6 +42,20 @@ void outputOriginalArray()
     cout << endl;
 }
 
+void deleteEvenElements()
+{
+    for (int i = 0; i < numberElements; i++)
+    {
+        if (arrayOfIntegers[i] % 2 != 0)
+        {
+            arrayOfIntegers[numberOddElements] = arrayOfIntegers[i];
+            numberOddElements++;
+        }
+    }
+    numberElements = numberOddElements;
+    cout << "Все чётные элементы успешно удалены " << endl;
+}
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -65,16 +79,7 @@ int main()
             outputOriginalArray();
             break;
         case 5:
-            for (int i = 0; i < numberElements; i++)
-            {
-                if (arrayOfIntegers[i] % 2 != 0)
-                {
-                    arrayOfIntegers[numberOddElements] = arrayOfIntegers[i];
-                    numberOddElements++;
-                }
-            }
-            numberElements = numberOddElements;
-            cout << "Все чётные элементы успешно удалены " << endl;
+            deleteEvenElements();
             break;
         case 6:
             if (numberElements == 0)
