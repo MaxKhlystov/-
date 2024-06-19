@@ -32,6 +32,16 @@ void enterSizeArrayAndFill()
     }
 }
 
+void outputOriginalArray()
+{
+    cout << "Исходный массив:" << endl;
+    for (int i = 0; i < numberElements; i++)
+    {
+        cout << setw(2) << arrayOfIntegers[i];
+    }
+    cout << endl;
+}
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -52,12 +62,7 @@ int main()
             enterSizeArrayAndFill();
             break;
         case 4:
-            cout << "Исходный массив:" << endl;
-            for (int i = 0; i < numberElements; i++)
-            {
-                cout << setw(2) << arrayOfIntegers[i];
-            }
-            cout << endl;
+            outputOriginalArray();
             break;
         case 5:
             for (int i = 0; i < numberElements; i++)
