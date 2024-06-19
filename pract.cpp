@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <vector>
 using namespace std;
-int numberElements = 10;
+int numberElements = 1;
 vector <int> arrayOfIntegers(numberElements);
 int numberOddElements = 0;
 void outputMenu()
