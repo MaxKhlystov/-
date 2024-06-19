@@ -2,6 +2,9 @@
 #include <iomanip>
 #include <vector>
 using namespace std;
+int numberElements = 10;
+vector <int> arrayOfIntegers(numberElements);
+int numberOddElements = 0;
 void outputMenu()
 {
     cout << "Меню: " << endl;
@@ -18,11 +21,19 @@ void outputTask()
     cout << "<<Удалить из массива целых чисел все чётные значения.>>" << endl;
 }
 
+void enterSizeArrayAndFill()
+{
+    cout << "Введите желаемый размер массива:"; cin >> numberElements;
+    for (int i = 0; i < numberElements;)
+    {
+        cout << "Введите элемент: ";
+        cin >> arrayOfIntegers[i];
+        cout << "Ячейка " << ++i << " заполнена" << endl;
+    }
+}
+
 int main()
 {
-    int numberElements = 10;
-    vector <int> arrayOfIntegers(numberElements);
-    int numberOddElements = 0;
     setlocale(LC_ALL, "Russian");
     outputMenu();
     int userChoice;
@@ -38,13 +49,7 @@ int main()
             outputTask();
             break;
         case 3:
-            cout << "Введите желаемый размер массива:"; cin >> numberElements;
-            for (int i = 0; i < numberElements;)
-            {
-                cout << "Введите элемент: ";
-                cin >> arrayOfIntegers[i];
-                cout << "Ячейка " << ++i << " заполнена" << endl;
-            }
+            enterSizeArrayAndFill();
             break;
         case 4:
             cout << "Исходный массив:" << endl;
