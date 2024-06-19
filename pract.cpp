@@ -21,7 +21,7 @@ void outputTask()
 
 int main()
 {
-    int numberElements = 1;
+    int numberElements = 10;
     vector <int> arrayOfIntegers(numberElements);
     int numberOddElements = 0;
     setlocale(LC_ALL, "Russian");
