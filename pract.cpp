@@ -56,6 +56,21 @@ void deleteEvenElements()
     cout << "Все чётные элементы успешно удалены " << endl;
 }
 
+void outputReceivedArray()
+{
+    if (numberElements == 0)
+    {
+        cout << "Исходный массив состоял только из чётных элементов. Они все были удалены ";
+    }
+    else
+        cout << "Полученный массив:" << endl;
+    for (int i = 0; i < numberElements; i++)
+    {
+        cout << setw(2) << arrayOfIntegers[i];
+    }
+    cout << endl;
+}
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -82,17 +97,7 @@ int main()
             deleteEvenElements();
             break;
         case 6:
-            if (numberElements == 0)
-            {
-                cout << "Исходный массив состоял только из чётных элементов. Они все были удалены ";
-            }
-            else
-                cout << "Полученный массив:" << endl;
-            for (int i = 0; i < numberElements; i++)
-            {
-                cout << setw(2) << arrayOfIntegers[i];
-            }
-            cout << endl;
+            outputReceivedArray();
             break;
         case 7:
             exit(0);
