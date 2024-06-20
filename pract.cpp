@@ -1,10 +1,14 @@
-﻿#include <iostream>
+﻿//добавление в нужную позицию 1 элемента
+#include <iostream>
 #include <iomanip>
 #include <vector>
 using namespace std;
-int numberElements = 1;
+int numberElements=10;
 vector <int> arrayOfIntegers(numberElements);
 int numberOddElements = 0;
+int numberElement;
+int userChoice1;
+int newElement;
 void outputMenu()
 {
     cout << "Меню: " << endl;
@@ -12,9 +16,10 @@ void outputMenu()
     cout << "Для вывода условия задания на экран введите (2): " << endl;
     cout << "Для ввода кол-ва элемементов и заполнения массива введите (3): " << endl;
     cout << "Для вывода исходного массива введите (4): " << endl;
-    cout << "Для удаления всех чётных элементов в массиве введите (5): " << endl;
-    cout << "Для вывода полученного массива введите (6): " << endl;
-    cout << "Выход (7): " << endl;
+    cout << "Для ввода дополнительного элемента в нужную позицию введите (5): " << endl;
+    cout << "Для удаления всех чётных элементов в массиве введите (6): " << endl;
+    cout << "Для вывода полученного массива введите (7): " << endl;
+    cout << "Выход (8): " << endl;
 }
 void outputTask()
 {
@@ -44,6 +49,25 @@ void outputOriginalArray()
         cout << setw(2) << arrayOfIntegers[i];
     }
     cout << endl;
+}
+
+void insertElement()
+{
+    cout << "Вы хотите заменить элемент (0) или добавить (1)?: "; cin >> userChoice1;
+    while (userChoice1 != 0 && userChoice1 != 1)
+    {
+        cout << "Действия с таким выбором нет. Введите свой выбор заново: "; cin >> userChoice1;
+    }
+    if (userChoice1 == 0)
+    {
+        cout << "Какой номер элемента, который вы хотите заменить?: "; cin >> numberElement;
+        while (numberElement<0 || numberElement>=numberElements)
+        {
+            cout << "Элемента с таким номером нет. Введите номер заново: "; cin >> numberElement;
+        }
+        cout << "Введите число:"; cin >> newElement;
+        arrayOfIntegers[numberElement-1] = newElement;
+    }
 }
 
 void deleteEvenElements()
@@ -98,12 +122,15 @@ int main()
             outputOriginalArray();
             break;
         case 5:
-            deleteEvenElements();
+            insertElement();
             break;
         case 6:
-            outputReceivedArray();
+            deleteEvenElements();
             break;
         case 7:
+            outputReceivedArray();
+            break;
+        case 8:
             exit(0);
         default:
             cout << "Команды с таким номером нет. Введите команду заново:"; cin >> userChoice;
