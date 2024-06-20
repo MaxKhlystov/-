@@ -51,6 +51,16 @@ void outputOriginalArray()
     cout << endl;
 }
 
+void outputNotOriginalArray()
+{
+    cout << "Полученный массив:" << endl;
+    for (int i = 0; i < numberElements; i++)
+    {
+        cout << setw(2) << arrayOfIntegers[i];
+    }
+    cout << endl;
+}
+
 void insertElement()
 {
     cout << "Вы хотите заменить элемент (0), добавить (1) или удалить (2)?: "; cin >> userChoice1;
@@ -67,12 +77,7 @@ void insertElement()
         }
         cout << "Введите число:"; cin >> newElement;
         arrayOfIntegers[numberElement-1] = newElement;
-        cout << "Полученный массив:" << endl;
-        for (int i = 0; i < numberElements; i++)
-        {
-            cout << setw(2) << arrayOfIntegers[i];
-        }
-        cout << endl;
+        outputNotOriginalArray();
     }
     if (userChoice1 == 1)
     {
@@ -84,12 +89,11 @@ void insertElement()
         numberElements += 1;
         for (int i = numberElements - 1; i >= numberElement; i--)
         {
-
             arrayOfIntegers[i] = arrayOfIntegers[i-1];
-
         }
         cout << "Введите число:"; cin >> newElement;
         arrayOfIntegers[numberElement-1] = newElement;
+        outputNotOriginalArray();
     }
     if (userChoice1 == 2)
     {
@@ -98,8 +102,12 @@ void insertElement()
         {
             cout << "Элемента с таким номером нет .Введите номер заново : "; cin >> numberElement;
         }
+        for (int i = numberElement - 1; i < numberElements; i++)
+        {
+            arrayOfIntegers[i] = arrayOfIntegers[i + 1];
+        }
         numberElements -= 1;
-
+        outputNotOriginalArray();
     }
 }
 
@@ -115,22 +123,27 @@ void deleteEvenElements()
     }
     numberElements = numberOddElements;
     cout << "Все чётные элементы успешно удалены " << endl;
+    int choice;
+    cout << "Хотите посмотреть полученный массив. Да (0), Нет (1): "; cin >> choice;
+    if (choice == 0)
+    {
+        if (numberElements == 0)
+        {
+            cout << "Исходный массив состоял только из чётных элементов. Они все были удалены ";
+        }
+        else outputNotOriginalArray();
+    }
 }
 
-void outputReceivedArray()
+/*void outputReceivedArray()
 {
     if (numberElements == 0)
     {
         cout << "Исходный массив состоял только из чётных элементов. Они все были удалены ";
     }
-    else
-        cout << "Полученный массив:" << endl;
-    for (int i = 0; i < numberElements; i++)
-    {
-        cout << setw(2) << arrayOfIntegers[i];
-    }
-    cout << endl;
-}
+    else outputNotOriginalArray();
+        
+}*/
 
 int main()
 {
@@ -161,7 +174,7 @@ int main()
             deleteEvenElements();
             break;
         case 7:
-            outputReceivedArray();
+            //outputReceivedArray();
             break;
         case 8:
             exit(0);
