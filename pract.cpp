@@ -8,6 +8,7 @@ int numberOddElements = 0;
 void outputMenu()
 {
     cout << "Меню: " << endl;
+    cout << "Для автоматических тестов программы введите (0): " << endl;
     cout << "Для повторного вывода меню на экран введите (1): " << endl;
     cout << "Для вывода условия задания на экран введите (2): " << endl;
     cout << "Для ввода кол-ва элемементов и заполнения массива введите (3): " << endl;
@@ -15,6 +16,11 @@ void outputMenu()
     cout << "Для удаления всех чётных элементов в массиве введите (5): " << endl;
     cout << "Для вывода полученного массива введите (6): " << endl;
     cout << "Выход (7): " << endl;
+}
+
+void conductTests()
+{
+
 }
 void outputTask()
 {
@@ -66,8 +72,7 @@ void outputReceivedArray()
     {
         cout << "Исходный массив состоял только из чётных элементов. Они все были удалены ";
     }
-    else
-        cout << "Полученный массив:" << endl;
+    else cout << "Полученный массив:" << endl;
     for (int i = 0; i < numberElements; i++)
     {
         cout << setw(2) << arrayOfIntegers[i];
