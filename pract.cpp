@@ -18,8 +18,7 @@ void outputMenu()
     cout << "Для вывода исходного массива введите (4): " << endl;
     cout << "Для ввода, замены, удаления элемента введите (5): " << endl;
     cout << "Для удаления всех чётных элементов в массиве введите (6): " << endl;
-    cout << "Для вывода полученного массива введите (7): " << endl;
-    cout << "Выход (8): " << endl;
+    cout << "Выход (7): " << endl;
 }
 void outputTask()
 {
@@ -135,16 +134,6 @@ void deleteEvenElements()
     }
 }
 
-/*void outputReceivedArray()
-{
-    if (numberElements == 0)
-    {
-        cout << "Исходный массив состоял только из чётных элементов. Они все были удалены ";
-    }
-    else outputNotOriginalArray();
-        
-}*/
-
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -174,9 +163,6 @@ int main()
             deleteEvenElements();
             break;
         case 7:
-            //outputReceivedArray();
-            break;
-        case 8:
             exit(0);
         default:
             cout << "Команды с таким номером нет. Введите команду заново:"; cin >> userChoice;
