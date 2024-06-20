@@ -16,7 +16,7 @@ void outputMenu()
     cout << "Для вывода условия задания на экран введите (2): " << endl;
     cout << "Для ввода кол-ва элемементов и заполнения массива введите (3): " << endl;
     cout << "Для вывода исходного массива введите (4): " << endl;
-    cout << "Для ввода дополнительного элемента в нужную позицию введите (5): " << endl;
+    cout << "Для ввода, замены, удаления элемента введите (5): " << endl;
     cout << "Для удаления всех чётных элементов в массиве введите (6): " << endl;
     cout << "Для вывода полученного массива введите (7): " << endl;
     cout << "Выход (8): " << endl;
@@ -53,8 +53,8 @@ void outputOriginalArray()
 
 void insertElement()
 {
-    cout << "Вы хотите заменить элемент (0) или добавить (1)?: "; cin >> userChoice1;
-    while (userChoice1 != 0 && userChoice1 != 1)
+    cout << "Вы хотите заменить элемент (0), добавить (1) или удалить (2)?: "; cin >> userChoice1;
+    while (userChoice1 != 0 && userChoice1 != 1 && userChoice1 != 2)
     {
         cout << "Действия с таким выбором нет. Введите свой выбор заново: "; cin >> userChoice1;
     }
@@ -67,6 +67,21 @@ void insertElement()
         }
         cout << "Введите число:"; cin >> newElement;
         arrayOfIntegers[numberElement-1] = newElement;
+    }
+    if (userChoice1 == 1)
+    {
+        cout << "Какой номер элемента, который вы хотите добавить?: "; cin >> numberElement;
+        while (numberElement < 0 || numberElement-1 > numberElements)
+        {
+            cout << "Вы не можете добавлять элементы, номер которых больше " <<numberElements+1<<".Введите номер заново : "; cin >> numberElement;
+        }
+        numberElements += 1;
+        for (int i = 0; i < numberElements; i++)
+        {
+            arrayOfIntegers[i + 1] = arrayOfIntegers[i];
+        }
+        cout << "Введите число:"; cin >> newElement;
+        arrayOfIntegers[0] = newElement;
     }
 }
 
