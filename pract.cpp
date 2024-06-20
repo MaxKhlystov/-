@@ -28,7 +28,7 @@ void outputTask()
 
 void enterSizeArrayAndFill()
 {
-    cout << "Введите желаемый размер массива:"; cin >> numberElements;
+    cout << "Введите желаемый размер массива: "; cin >> numberElements;
     while (numberElements <= 0)
     {
         cout << "Размер массива должен быть > 0. Введите размер заново: "; cin >> numberElements;
@@ -84,10 +84,9 @@ void insertElement()
         numberElements += 1;
         for (int i = numberElements - 1; i >= numberElement; i--)
         {
-            if (arrayOfIntegers[i - 1] != NULL) 
-            {
-                arrayOfIntegers[i] = arrayOfIntegers[i-1];
-            }
+
+            arrayOfIntegers[i] = arrayOfIntegers[i-1];
+
         }
         cout << "Введите число:"; cin >> newElement;
         arrayOfIntegers[numberElement-1] = newElement;
