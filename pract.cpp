@@ -1,4 +1,6 @@
 ﻿//добавление в нужную позицию 1 элемента
+//git branch -M main
+//git push -u origin main
 #include <iostream>
 #include <iomanip>
 #include <vector>
