@@ -14,7 +14,6 @@ int newElement;
 void outputMenu()
 {
     cout << "Меню: " << endl;
-    cout << "Для автоматических тестов программы введите (0): " << endl;
     cout << "Для повторного вывода меню на экран введите (1): " << endl;
     cout << "Для вывода условия задания на экран введите (2): " << endl;
     cout << "Для ввода кол-ва элемементов и заполнения массива введите (3): " << endl;
@@ -24,10 +23,6 @@ void outputMenu()
     cout << "Выход (7): " << endl;
 }
 
-void conductTests()
-{
-
-}
 void outputTask()
 {
     cout << "<<Удалить из массива целых чисел все чётные значения.>>" << endl;
@@ -139,8 +134,6 @@ void deleteEvenElements()
             cout << "Исходный массив состоял только из чётных элементов. Они все были удалены ";
         }
         else outputNotOriginalArray();
-        cout << setw(2) << arrayOfIntegers[i];
-        cout << setw(2) << arrayOfIntegers[i];
     }
 }
 
