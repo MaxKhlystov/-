@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <vector>
 using namespace std;
-int numberElements=10;
+int numberElements=100;
 vector <int> arrayOfIntegers(numberElements);
 int numberOddElements = 0;
 int numberElement;
@@ -67,6 +67,12 @@ void insertElement()
         }
         cout << "Введите число:"; cin >> newElement;
         arrayOfIntegers[numberElement-1] = newElement;
+        cout << "Полученный массив:" << endl;
+        for (int i = 0; i < numberElements; i++)
+        {
+            cout << setw(2) << arrayOfIntegers[i];
+        }
+        cout << endl;
     }
     if (userChoice1 == 1)
     {
@@ -76,12 +82,25 @@ void insertElement()
             cout << "Вы не можете добавлять элементы, номер которых больше " <<numberElements+1<<".Введите номер заново : "; cin >> numberElement;
         }
         numberElements += 1;
-        for (int i = 0; i < numberElements; i++)
+        for (int i = numberElements - 1; i >= numberElement; i--)
         {
-            arrayOfIntegers[i + 1] = arrayOfIntegers[i];
+            if (arrayOfIntegers[i - 1] != NULL) 
+            {
+                arrayOfIntegers[i] = arrayOfIntegers[i-1];
+            }
         }
         cout << "Введите число:"; cin >> newElement;
-        arrayOfIntegers[0] = newElement;
+        arrayOfIntegers[numberElement-1] = newElement;
+    }
+    if (userChoice1 == 2)
+    {
+        cout << "Какой номер элемента, который вы хотите удалить?: "; cin >> numberElement;
+        while (numberElement < 0 || numberElement - 1 > numberElements)
+        {
+            cout << "Элемента с таким номером нет .Введите номер заново : "; cin >> numberElement;
+        }
+        numberElements -= 1;
+
     }
 }
 
