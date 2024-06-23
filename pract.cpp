@@ -7,10 +7,7 @@
 using namespace std;
 int numberElements=100;
 vector <int> arrayOfIntegers(numberElements);
-int numberOddElements = 0;
-int numberElement;
-int userChoice1;
-int newElement;
+
 void outputMenu()
 {
     cout << "Меню: " << endl;
@@ -48,7 +45,7 @@ void outputOriginalArray()
     cout << "Исходный массив:" << endl;
     for (int i = 0; i < numberElements; i++)
     {
-        cout << setw(2) << arrayOfIntegers[i];
+        cout << setw(3) << arrayOfIntegers[i];
     }
     cout << endl;
 }
@@ -58,13 +55,16 @@ void outputNotOriginalArray()
     cout << "Полученный массив:" << endl;
     for (int i = 0; i < numberElements; i++)
     {
-        cout << setw(2) << arrayOfIntegers[i];
+        cout << setw(3) << arrayOfIntegers[i];
     }
     cout << endl;
 }
 
 void insertElement()
-{
+{   short numberElement;
+    short userChoice1;
+    short newElement;
+    short nullElements;
     cout << "Вы хотите заменить элемент (0), добавить (1) или удалить (2)?: "; cin >> userChoice1;
     while (userChoice1 != 0 && userChoice1 != 1 && userChoice1 != 2)
     {
@@ -84,18 +84,24 @@ void insertElement()
     if (userChoice1 == 1)
     {
         cout << "Какой номер элемента, который вы хотите добавить?: "; cin >> numberElement;
-        while (numberElement < 0 || numberElement-1 > numberElements)
+        if (numberElement > numberElements+1)
         {
-            cout << "Вы не можете добавлять элементы, номер которых больше " <<numberElements+1<<".Введите номер заново : "; cin >> numberElement;
+            nullElements = numberElement-numberElements;
+            numberElements += nullElements;
+            cout << "Введите число:"; cin >> newElement;
+            arrayOfIntegers[numberElement - 1] = newElement;
+            outputNotOriginalArray();
         }
-        numberElements += 1;
-        for (int i = numberElements - 1; i >= numberElement; i--)
+        else
         {
-            arrayOfIntegers[i] = arrayOfIntegers[i-1];
+            for (int i = numberElements - 1; i >= numberElement; i--)
+            {
+                arrayOfIntegers[i] = arrayOfIntegers[i - 1];
+            }
+            cout << "Введите число:"; cin >> newElement;
+            arrayOfIntegers[numberElement - 1] = newElement;
+            outputNotOriginalArray();
         }
-        cout << "Введите число:"; cin >> newElement;
-        arrayOfIntegers[numberElement-1] = newElement;
-        outputNotOriginalArray();
     }
     if (userChoice1 == 2)
     {
@@ -114,7 +120,7 @@ void insertElement()
 }
 
 void deleteEvenElements()
-{
+{   short numberOddElements = 0;
     for (int i = 0; i < numberElements; i++)
     {
         if (arrayOfIntegers[i] % 2 != 0)
@@ -125,7 +131,7 @@ void deleteEvenElements()
     }
     numberElements = numberOddElements;
     cout << "Все чётные элементы успешно удалены " << endl;
-    int choice;
+    short choice;
     cout << "Хотите посмотреть полученный массив. Да (0), Нет (1): "; cin >> choice;
     if (choice == 0)
     {
@@ -141,7 +147,7 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
     outputMenu();
-    int userChoice;
+    short userChoice;
     cout << "Введите команду: "; cin >> userChoice;
     do
     {
@@ -168,8 +174,8 @@ int main()
         case 7:
             exit(0);
         default:
-            cout << "Команды с таким номером нет. Введите команду заново:"; cin >> userChoice;
+            cout << "Команды с таким номером нет. Введите команду заново:"; 
         }
-        cout << "Введите следующую команду: "; cin >> userChoice;
+        cout << "Введите команду: "; cin >> userChoice;
     } while (true);
 }
