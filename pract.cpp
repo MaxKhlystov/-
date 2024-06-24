@@ -116,6 +116,7 @@ void insertElement()
         }
         numberElements -= 1;
         outputNotOriginalArray();
+        numberElements += 1;
     }
 }
 
